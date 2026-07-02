@@ -20,7 +20,7 @@ for _mod in ("sec10k.ruleset.loader", "sec10k.loader", "sec10k.ruleset"):
     except Exception:
         continue
 
-EVAL_DIR = Path("tests/fixtures/eval_recent")
+EVAL_DIR = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("tests/fixtures/eval_recent")
 
 def es(x):
     return getattr(x, "name", None) or str(x)
