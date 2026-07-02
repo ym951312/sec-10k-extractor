@@ -1,0 +1,145 @@
+UNITED STATES SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM 10-K
+ACME ROBOTICS CORP
+For the fiscal year ended December 31, 2023
+Commission file number 001-12345
+
+TABLE OF CONTENTS
+Item 1. Business................................................. 3
+Item 1A. Risk Factors........................................... 8
+Item 1B. Unresolved Staff Comments............................. 12
+Item 1C. Cybersecurity......................................... 13
+Item 2. Properties............................................. 20
+Item 3. Legal Proceedings...................................... 22
+Item 4. Mine Safety Disclosures................................ 23
+Item 5. Market for Registrant Common Equity.................... 25
+Item 6. [Reserved]............................................. 30
+Item 7. Management Discussion and Analysis..................... 31
+Item 7A. Quantitative and Qualitative Disclosures.............. 38
+Item 8. Financial Statements................................... 40
+Item 9. Changes in and Disagreements........................... 60
+Item 9A. Controls and Procedures............................... 61
+Item 9B. Other Information..................................... 63
+Item 10. Directors and Executive Officers...................... 64
+Item 11. Executive Compensation................................ 65
+Item 12. Security Ownership.................................... 66
+Item 13. Certain Relationships................................. 67
+Item 14. Principal Accountant Fees............................. 68
+Item 15. Exhibits and Financial Statement Schedules............ 69
+
+ACME ROBOTICS CORP - FORM 10-K
+PART I
+ITEM 1. BUSINESS
+ACME Robotics designs and manufactures industrial robots for warehouse logistics.
+Our flagship product is the gantry picker deployed across distribution centers.
+Page 3
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 1A. RISK FACTORS
+Demand for automation may decline if interest rates rise and capital budgets shrink.
+Supply chain disruptions in semiconductors could delay shipments materially.
+Page 8
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 1B. UNRESOLVED STAFF COMMENTS
+None.
+Page 12
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 1C. CYBERSECURITY
+We maintain a risk-based cybersecurity program overseen by the audit committee.
+Page 13
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 2. PROPERTIES
+We lease a headquarters facility in Austin and a manufacturing plant in Reno.
+Page 20
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 3. LEGAL PROCEEDINGS
+We are not party to any material legal proceedings at this time.
+Page 22
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 4. MINE SAFETY DISCLOSURES
+Not applicable.
+Page 23
+
+ACME ROBOTICS CORP - FORM 10-K
+PART II
+ITEM 5. MARKET FOR REGISTRANT COMMON EQUITY
+Our common stock trades on the Nasdaq Global Select Market under the symbol ACME.
+Page 25
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 6. [Reserved]
+Page 30
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 7. MANAGEMENT DISCUSSION AND ANALYSIS
+Revenue grew on stronger unit volumes and improved gross margin discipline.
+Page 31
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES
+We are exposed to interest rate risk on our variable rate borrowings.
+Page 38
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 8. FINANCIAL STATEMENTS
+The consolidated financial statements and accompanying notes appear below.
+Total revenue was 1,234 million for the year ended December 31, 2023.
+Page 40
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS
+None.
+Page 60
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 9A. CONTROLS AND PROCEDURES
+Management concluded that disclosure controls were effective as of year end.
+Page 61
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 9B. OTHER INFORMATION
+None.
+Page 63
+
+ACME ROBOTICS CORP - FORM 10-K
+PART III
+ITEM 10. DIRECTORS AND EXECUTIVE OFFICERS
+The information required by this item is incorporated by reference to our proxy statement.
+Page 64
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 11. EXECUTIVE COMPENSATION
+The information required by this item is incorporated by reference to our proxy statement.
+Page 65
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS
+The information required by this item is incorporated by reference to our proxy statement.
+Page 66
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS
+The information required by this item is incorporated by reference to our proxy statement.
+Page 67
+
+ACME ROBOTICS CORP - FORM 10-K
+ITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES
+The information required by this item is incorporated by reference to our proxy statement.
+Page 68
+
+ACME ROBOTICS CORP - FORM 10-K
+PART IV
+ITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES
+The exhibits listed on the accompanying exhibit index are filed as part of this report.
+Page 69
+
+ACME ROBOTICS CORP - FORM 10-K
+SIGNATURES
+Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below.
+Page 70
