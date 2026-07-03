@@ -210,6 +210,27 @@ def test_large_unclassified_residual_violation():
 
 
 # --------------------------------------------------------------------------- #
+# inv 9 — cover-page dominance
+# --------------------------------------------------------------------------- #
+def test_cover_dominance_pass():
+    assert _gate(standard_valid_layout()).invariant_results["cover_dominance"]
+
+
+def test_oversized_cover_page_violation():
+    # A single COVER_PAGE spanning ~95% of the ruler must trip inv 9.
+    n = 1000
+    cover_end = 950  # 0.95 >= 0.9 threshold
+    text = "c" * cover_end + "x" * (n - cover_end)
+    ruler = Ruler(text=text, file_generation=FileGeneration.HTML_XBRL)
+    residual = [ResidualSpan(
+        char_span=CharSpan(start=0, end=cover_end),
+        classification=ResidualClass.COVER_PAGE)]
+    report = run_gate(ruler, [], residual, RS)
+    assert report.invariant_results["cover_dominance"] is False
+    assert ReasonCode.OVERSIZED_COVER_PAGE in _codes(report)
+
+
+# --------------------------------------------------------------------------- #
 # inv 5 — legal structure
 # --------------------------------------------------------------------------- #
 def test_legal_structure_pass_standard():

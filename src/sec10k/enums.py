@@ -110,6 +110,7 @@ class ReasonCode(str, Enum):
     MISSING_EXPECTED_ITEM = "missing_expected_item"  # inv 6
     XBRL_MISMATCH = "xbrl_mismatch"                # inv 7
     CROSS_METHOD_DISAGREE = "cross_method_disagree"  # inv 8
+    OVERSIZED_COVER_PAGE = "oversized_cover_page"  # inv 9 (cover page dominates doc)
 
     # --- Soft / low-confidence signals ---
     LOW_EVIDENCE = "low_evidence"

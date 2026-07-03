@@ -262,3 +262,45 @@ def check_cross_method(items: list[Item], alt_items: list[Item] | None) -> list[
                 f"({it.char_span.start} vs {other.char_span.start})",
                 it.item_id, it.char_span))
     return viols
+
+
+# --------------------------------------------------------------------------- #
+# inv 9 — cover-page dominance
+# --------------------------------------------------------------------------- #
+# A single COVER_PAGE residual spanning at least this fraction of the whole
+# ruler is a red flag: the "cover page" is physically implausible and the body
+# has almost certainly been mis-segmented into it (INTC FY2025 pattern, where a
+# body with no Item N enumerators made ~99.4% of the doc a benign COVER_PAGE
+# while 21 shell items from a trailing index table satisfied should-exist).
+#
+# CALIBRATION BOUNDARY (honest scope): 0.9 was calibrated on 21 real filings
+# (ruler lengths 194k-1,249k chars) plus 2 synthetic fixtures. Legit filings
+# measured cover/all <= 0.055 (max PFE); the two known failures measured >=
+# 0.970 (C 0.970, INTC 0.994). Behaviour on filings far SMALLER than this
+# calibration range (e.g. a few thousand chars, where a fixed-size cover page
+# is a large fraction) is UNVERIFIED; revisit if the sample includes such files.
+_COVER_DOMINANCE_MAX = 0.9
+
+
+def check_cover_dominance(ruler: Ruler, residual: list[ResidualSpan]) -> list[Violation]:
+    """inv 9 — a COVER_PAGE residual must not dominate the document.
+
+    Closes the silent-PASS valve found in INTC FY2025: no other invariant
+    inspects COVER_PAGE size, so a filing whose whole body was classified as a
+    benign cover page passed 8/8. This check TIGHTENS the gate (silent -> loud);
+    it never loosens any threshold. Uses only span geometry + the residual
+    class label (never title strings)."""
+    viols: list[Violation] = []
+    if ruler.length == 0:
+        return viols
+    for r in residual:
+        if r.classification is ResidualClass.COVER_PAGE:
+            frac = r.char_span.length / ruler.length
+            if frac >= _COVER_DOMINANCE_MAX:
+                viols.append(_hard(
+                    ReasonCode.OVERSIZED_COVER_PAGE,
+                    f"cover_page residual spans {frac:.1%} of the document "
+                    f"({r.char_span.length}/{ruler.length} chars) — body almost "
+                    f"certainly mis-segmented into it",
+                    span=r.char_span))
+    return viols

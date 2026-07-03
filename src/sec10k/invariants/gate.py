@@ -28,7 +28,7 @@ def run_gate(
     xbrl_spans: list[CharSpan] | None = None,
     alt_items: list[Item] | None = None,
 ) -> VerificationReport:
-    """Run the eight invariants and aggregate into a :class:`VerificationReport`.
+    """Run the nine invariants and aggregate into a :class:`VerificationReport`.
 
     ``xbrl_spans`` (inv 7) and ``alt_items`` (inv 8) are optional evidence
     channels; when absent those invariants are simply not exercised (a pass, not
@@ -49,6 +49,7 @@ def run_gate(
     run("should_exist", checks.check_should_exist(items, ruleset))
     run("item8_xbrl", checks.check_item8_xbrl(items, xbrl_spans))
     run("cross_method", checks.check_cross_method(items, alt_items))
+    run("cover_dominance", checks.check_cover_dominance(ruler, residual))
 
     status, confidence = decide_filing(violations)
     return VerificationReport(
