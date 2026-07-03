@@ -79,8 +79,12 @@ C 與 INTC **不同**：C 是「三重零」（Stage-1 之後、Stage-1 之前�
 
 **C 與 INTC 的對比本身是很好的 eval 材料**：同樣切不出正文，一個誠實失敗（C，錨點=0 → id 全不在 → 舉手）、一個假裝成功（INTC，索引表給了 21 個假 id → id 全在 → 放行）。真正的破口是 gate 的 `should_exist` 只檢查「item id 在不在」、不檢查「item 是否有實質內容/覆蓋率」。
 
-### 3.4 未解點（明確標記為假設）
-一份 16 MB 的 Citi 10-K，連去標籤 raw 都 0 個 Item N，本身反常。已排除：非 gate 丟棄（統計全 0）、非 Stage-1 剝除（去標籤 raw 獨立於 Stage-1 也是 0）、非 INTC 式索引表誤用。**剩餘最可能假說（未驗證）**：C-2「版式將 Item 與編號拆到不同表格 cell，中間夾其他可見文字，使 `item[\s]+1` 永遠配不到」。此假說**尚未探查證實**，且因對修法無決定性影響（C 已正確 loud fail、且無答案鍵可驗證「切對」）而暫列為已知未竟事項。
+### 3.4 根因（原列為假設，2026-07-03 探查後已結案）
+初診時，一份 16 MB 的 Citi 10-K 連去標籤 raw 都 0 個 Item N 顯得反常，當時列出「C-2 版式拆分假說（未驗證）」：疑 Item 與編號被拆到不同表格 cell。**本輪 raw HTML 探查已推翻此假說**：raw 裡 "Item" 單獨字詞僅 55 次，且幾乎全是普通名詞（notable item、item represent）、法規引用（Item 402(v)）、或單一欄標題（Item Number）；放寬「Item 與 1 之間夾 ≤200 字」在 raw 仍只配到 15 個垃圾匹配，無任何被標籤拆開的 Item N 標題。
+
+**已驗證的真正根因**：Citi 全文無 per-section Item N token——cross-reference index 用裸編號 `1A. / 2. / 3.`（"Item" 僅為整表欄標題、非每列重複），正文用主題標題（Risk Factors / Properties，且多為句中引用）。anchor regex 需要 "Item"/"Items" 字，故 find_anchors=0。
+
+**與 INTC 同源、但更極端**：兩者正文皆無 per-section Item N；差別僅在索引表列舉子帶不帶 "Item"——INTC 帶（`Item 1.`）→ 23 假錨 → silent PASS；C 不帶（裸 `1A.`）→ 0 錨 → loud FAILED。C 的 gate 表現正確，正是因為 Citi 索引用裸編號（若帶 "Item" 前綴，C 亦會像 INTC 般 silent PASS——但 inv 9 現已能攔截此類）。這仍是 enumerator 方法的已知邊界：C 無法被正確切割（正文無編號），gate 正確地大聲失敗，非「切對」。
 
 ---
 
@@ -138,9 +142,9 @@ C 與 INTC **不同**：C 是「三重零」（Stage-1 之後、Stage-1 之前�
 
 ## 6. 已知未竟事項
 
-- C 的「16 MB 文件連 raw 都 0 個 Item N」根因（C-2 版式拆分假說）尚未探查證實。
+- ~~C 的 C-2 版式拆分假說尚未證實~~ → 已結案（2026-07-03）：C-2 推翻，根因為裸編號索引 + 正文無 Item N；與 INTC 同源，詳見 §3.4。
 - KKR 是否修復 `_greedy_monotonic`（傾向不修、只記錄）待最終定案。
-- INTC gate 紅旗的具體指標與閾值尚待設計，並須經全 21 家回歸驗證不誤殺。
+- ~~INTC gate 紅旗尚待設計~~ → 已完成（commit 4a2749b）：inv 9 cover_dominance（cover/all ≥ 0.9）已實作、全 21 家回歸零誤殺。註：inv 9 只讓 INTC 從 silent PASS 轉 loud FAILED，並未「切對」INTC（正文無編號仍是方法邊界）。
 - 與第一輪的關聯（**均為假設，待更多實證**）：KKR 的 Part III 交界殘留 vs 第一輪 BRK-B（421 字殘留）可能共享「Part III 交界處理」家族，但規模差兩個數量級、是否同一 code 路徑未證實；INTC 為第一輪未見的全新型態（正文無編號）。
 - Level-3（飽和抽樣）、Level-4（全母體頻率估計）尚未進行；三種失敗型態在母體中的頻率未知。
 
