@@ -43,6 +43,20 @@ This pipeline's segmentation correctness was validated at two levels of strength
 
 完整報告（繁體中文，含英文摘要）詳見 `docs/VALIDATION_part_1.md`。
 
+## 下游用途：一個後來才出現的方向（探索中，尚未實作）
+
+這個專案原本的範圍到分段為止——把 raw 10-K 切成 item，在無 ground truth 下自我驗證，誠實回報信心與失敗。在後續討論中浮現一個原本不在規劃內的問題：切好的 section 本身，能不能成為量化研究的原料？
+
+這個問題有具體的文獻對應。學界有一條研究線的原料正是 per-section 的 10-K 文本，其中最知名的是 Cohen, Malloy & Nguyen 的 *Lazy Prices*：比較同一家公司今年與去年的申報文字，改動幅度較大的公司，後續股價表現較差。該研究全程不需 LLM——方法是文本相似度與字典計數——與本專案「零金鑰、零網路、確定性」的核心屬同一血統。
+
+想嘗試的方向，是把目前「一份 filing 進、一份分段結果出」的 pipeline，延伸成跨公司、跨年度的 **feature panel**：每份申報產出一筆結構化紀錄（各 item 的有無、長度、conditional 旗標、confidence、reason codes），並在同公司、同 item 上做逐年比對。其中一個看起來還沒被涵蓋的角度是**結構異常本身**——以 regex 解析的研究通常會丟棄格式異常的申報檔，而那正是本 pipeline 當一等公民處理、並會主動標紅的那一類。它是否帶有訊息，是待檢驗的假設，不是結論。
+
+**現況必須講清楚：目前只有分析，沒有任何實作，是否執行尚未決定。** 本 repo 不含任何回測、訊號或報酬資料；三條鐵律不因此變動。
+
+分析紀錄（含已查證的文獻事實、被否決的候選方向、以及尚未回答的統計前提）見 [`docs/reports/2026-08-05_notes_downstream-quant-use.md`](docs/reports/2026-08-05_notes_downstream-quant-use.md)。
+
+> Cohen, L., Malloy, C., & Nguyen, Q. (2020). Lazy Prices. *The Journal of Finance*, 75(3), 1371–1415. https://doi.org/10.1111/jofi.12885
+
 ## AI 協助環節
 
 本專案全程以 AI 輔助開發，分工與原則如下：
